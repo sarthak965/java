@@ -18,7 +18,7 @@ public class linkedlistnode {
 
         // Convert array to linked list
         Node head = arrayToLinkedList(array);
-         //  Node temp=removetail(head);
+           Node temp=deleteel(head, "four");
            printLinkedList(head);
 
         // Print the linked list
@@ -62,4 +62,50 @@ public class linkedlistnode {
     
 
     }
+  public static Node deletekvalue(Node head, int k) {
+     if (head== null) {
+        return null;
+     }
+     if (k==1) {
+        Node temp=head;
+        head=head.next;
+        return head;
+     }
+
+     int count =0;
+     Node temp=head;
+     while (temp!=null) {
+        count++; 
+        if (count==k-1){
+            temp.next=temp.next.next;
+            break;
+        }
+        temp=temp.next;
+     }
+     return head;
+  }
+
+  public static Node deleteel(Node head, String el) {
+    if (head== null) {
+       return null;
+    }
+    if (head.data==el) {
+       Node temp=head;
+       head=head.next;
+       return head;
+    }
+
+    Node prev=null;
+    Node temp=head;
+    while (temp!=null) {
+       
+       if (temp.data==el){
+           prev.next=prev.next.next;
+           break;
+       }
+       prev= temp;
+       temp=temp.next;
+    }
+    return head;
+ }
 }
