@@ -1487,13 +1487,12 @@ AS
 BEGIN
 
     INSERT INTO bank(AccountType, CurrentBalance)
-    SELECT
-        Account_type,
-        Account_opening_balance
+    SELECT Account_type,
+           Account_opening_balance
     FROM inserted
-    WHERE KYC_Status = 'Approved';
+    WHERE kyc_status = 'Approved';
 
-    INSERT INTO AccountHolderDetails
+    INSERT INTO AccountHolderDetail
     (
         Account_HolderName,
         DOB,
@@ -1501,14 +1500,13 @@ BEGIN
         MobileNumber,
         FullAddress
     )
-    SELECT
-        Account_HolderName,
-        DOB,
-        AadharNumber,
-        MobileNumber,
-        FullAddress
+    SELECT Account_HolderName,
+           DOB,
+           AadharNumber,
+           MobileNumber,
+           FullAddress
     FROM inserted
-    WHERE KYC_Status = 'Approved';
+    WHERE kyc_status = 'Approved';
 
 END;
 ```
